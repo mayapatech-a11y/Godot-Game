@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3]
+
+[sub_resource type="StandardMaterial3D" id="Mat_Wall"]
+albedo_color = Color(0.7, 0.65, 0.55, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="Mat_Window"]
+albedo_color = Color(0.1, 0.1, 0.1, 1)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Sachet"]
+albedo_color = Color(1.0, 0.8, 0.2, 1)
+emission_enabled = true
+emission = Color(1.0, 0.5, 0.0, 1)
+emission_energy_multiplier = 0.5
+
+[sub_resource type="BoxMesh" id="Mesh_Wall"]
+size = Vector3(5, 3, 4)
+
+[sub_resource type="BoxMesh" id="Mesh_Window"]
+size = Vector3(3, 1.5, 0.2)
+
+[sub_resource type="BoxMesh" id="Mesh_Sachet"]
+size = Vector3(0.2, 0.4, 0.1)
+
+[sub_resource type="BoxShape3D" id="Shape_Body"]
+size = Vector3(5, 3, 4)
+
+[node name="SariSariStore" type="StaticBody3D"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+position = Vector3(0, 1.5, 0)
+shape = SubResource("Shape_Body")
+
+[node name="Wall" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.5, 0)
+material_override = SubResource("Mat_Wall")
+mesh = SubResource("Mesh_Wall")
+
+[node name="Window" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.8, -2.0)
+material_override = SubResource("Mat_Window")
+mesh = SubResource("Mesh_Window")
+
+[node name="Sachet1" type="MeshInstance3D" parent="."]
+position = Vector3(-1.2, 1.3, -2.1)
+material_override = SubResource("Mat_Sachet")
+mesh = SubResource("Mesh_Sachet")
+
+[node name="Sachet2" type="MeshInstance3D" parent="."]
+position = Vector3(-0.8, 1.4, -2.1)
+material_override = SubResource("Mat_Sachet")
+mesh = SubResource("Mesh_Sachet")
+
+[node name="Sachet3" type="MeshInstance3D" parent="."]
+position = Vector3(-0.4, 1.2, -2.1)
+material_override = SubResource("Mat_Sachet")
+mesh = SubResource("Mesh_Sachet")

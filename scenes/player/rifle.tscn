@@ -1,0 +1,87 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://scripts/player/gun.gd" id="1_gun"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_Metal"]
+albedo_color = Color(0.14, 0.14, 0.17, 1)
+metallic = 0.75
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="Mat_Wood"]
+albedo_color = Color(0.36, 0.22, 0.11, 1)
+roughness = 0.7
+
+[sub_resource type="StandardMaterial3D" id="Mat_Flash"]
+albedo_color = Color(1, 0.9, 0.5, 1)
+emission_enabled = true
+emission = Color(1, 0.7, 0.3, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="BoxMesh" id="Mesh_Body"]
+size = Vector3(0.08, 0.12, 0.5)
+
+[sub_resource type="BoxMesh" id="Mesh_Barrel"]
+size = Vector3(0.03, 0.03, 0.45)
+
+[sub_resource type="BoxMesh" id="Mesh_Grip"]
+size = Vector3(0.08, 0.15, 0.06)
+
+[sub_resource type="BoxMesh" id="Mesh_Mag"]
+size = Vector3(0.05, 0.15, 0.04)
+
+[sub_resource type="BoxMesh" id="Mesh_Stock"]
+size = Vector3(0.06, 0.1, 0.15)
+
+[sub_resource type="SphereMesh" id="Mesh_Flash"]
+radius = 0.08
+height = 0.16
+
+[node name="Rifle" type="Node3D"]
+script = ExtResource("1_gun")
+display_name = "Rifle"
+damage = 25.0
+fire_rate = 0.15
+range_meters = 60.0
+magazine_size = 30
+reload_time = 1.5
+
+[node name="Body" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, 0.2)
+material_override = SubResource("Mat_Metal")
+mesh = SubResource("Mesh_Body")
+
+[node name="Barrel" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -0.22)
+material_override = SubResource("Mat_Metal")
+mesh = SubResource("Mesh_Barrel")
+
+[node name="Grip" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.1, 0.36)
+material_override = SubResource("Mat_Wood")
+mesh = SubResource("Mesh_Grip")
+
+[node name="Magazine" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.13, 0.16)
+material_override = SubResource("Mat_Metal")
+mesh = SubResource("Mesh_Mag")
+
+[node name="Stock" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, 0.55)
+material_override = SubResource("Mat_Wood")
+mesh = SubResource("Mesh_Stock")
+
+[node name="Muzzle" type="Marker3D" parent="."]
+position = Vector3(0, 0, -0.46)
+
+[node name="MuzzleFlash" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -0.47)
+material_override = SubResource("Mat_Flash")
+mesh = SubResource("Mesh_Flash")
+visible = false
+
+[node name="MuzzleLight" type="OmniLight3D" parent="."]
+position = Vector3(0, 0, -0.47)
+light_color = Color(1, 0.8, 0.4, 1)
+light_energy = 4.0
+omni_range = 3.0
+visible = false

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CharacterDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/character/character_definition.gd" id="1_cd"]
+[ext_resource type="PackedScene" path="res://scenes/character/player_visual_01.tscn" id="2_vis"]
+
+[resource]
+script = ExtResource("1_cd")
+display_name = "Player"
+faction = &"player"
+visual_scene = ExtResource("2_vis")
+max_health = 100
+move_speed = 4.5
+turn_speed = 10.0
+attack_damage = 0
+attack_range = 0.0
+attack_cooldown = 0.2
+collision_radius = 0.4
+collision_height = 1.8
+collision_offset_y = 0.9
+collision_layer = 1
+collision_mask = 5
+vision_range = 15.0
+vision_angle_deg = 120.0

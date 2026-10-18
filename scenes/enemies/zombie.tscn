@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/zombie_ai.gd" id="1_ai"]
+[ext_resource type="Resource" path="res://resources/characters/zombie_definition.tres" id="2_def"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_default"]
+radius = 0.4
+height = 1.8
+
+[node name="Zombie" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_ai")
+definition = ExtResource("2_def")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_default")
+
+[node name="Visual" type="Node3D" parent="."]

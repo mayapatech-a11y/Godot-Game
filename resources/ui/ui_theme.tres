@@ -1,0 +1,70 @@
+[gd_resource type="Theme" load_steps=8 format=3]
+
+[sub_resource type="StyleBoxFlat" id="panel_bg"]
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+bg_color = Color(0.05, 0.05, 0.05, 0.75)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 0.2, 0.2, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="bar_bg"]
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="hp_fill"]
+bg_color = Color(0.9, 0.15, 0.15, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="stam_fill"]
+bg_color = Color(0.9, 0.75, 0.15, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="hung_fill"]
+bg_color = Color(0.7, 0.45, 0.2, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="rel_fill"]
+bg_color = Color(0.2, 0.5, 0.9, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[resource]
+VitalsPanel/base_type = &"PanelContainer"
+VitalsPanel/styles/panel = SubResource("panel_bg")
+WeaponPanel/base_type = &"PanelContainer"
+WeaponPanel/styles/panel = SubResource("panel_bg")
+HealthBar/base_type = &"ProgressBar"
+HealthBar/styles/background = SubResource("bar_bg")
+HealthBar/styles/fill = SubResource("hp_fill")
+StaminaBar/base_type = &"ProgressBar"
+StaminaBar/styles/background = SubResource("bar_bg")
+StaminaBar/styles/fill = SubResource("stam_fill")
+HungerBar/base_type = &"ProgressBar"
+HungerBar/styles/background = SubResource("bar_bg")
+HungerBar/styles/fill = SubResource("hung_fill")
+ReloadBar/base_type = &"ProgressBar"
+ReloadBar/styles/background = SubResource("bar_bg")
+ReloadBar/styles/fill = SubResource("rel_fill")

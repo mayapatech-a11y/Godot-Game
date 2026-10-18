@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://dvipp75ssyuyq"]
+
+[ext_resource type="Script" uid="uid://ccj24lmwscjcx" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="Script" uid="uid://d1c2w0jyor5ap" path="res://scripts/ui/hud.gd" id="2_hud"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="3_player"]
+[ext_resource type="Script" uid="uid://cqxw8miyy1bl6" path="res://scripts/ui/crosshair.gd" id="4_cross"]
+[ext_resource type="PackedScene" path="res://scenes/items/pickup.tscn" id="5_pickup"]
+[ext_resource type="PackedScene" path="res://scenes/props/bahay_kubo.tscn" id="6_kubo"]
+[ext_resource type="PackedScene" path="res://scenes/props/jeepney.tscn" id="7_jeep"]
+[ext_resource type="PackedScene" path="res://scenes/props/sari_sari.tscn" id="8_sari"]
+[ext_resource type="PackedScene" path="res://scenes/props/palm_tree.tscn" id="9_palm"]
+
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 1
+background_color = Color(0.6, 0.7, 0.85, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.72, 0.76, 0.85, 1)
+ambient_light_energy = 0.65
+tonemap_mode = 2
+ssao_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_1"]
+geometry_parsed_geometry_type = 1
+geometry_collision_mask = 1
+agent_height = 2.0
+
+[sub_resource type="BoxShape3D" id="Shape_Ground"]
+size = Vector3(120, 0.5, 120)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Ground"]
+albedo_color = Color(0.34, 0.48, 0.28, 1)
+roughness = 0.95
+
+[sub_resource type="PlaneMesh" id="Mesh_Ground"]
+size = Vector2(120, 120)
+
+[node name="Main" type="Node3D" unique_id=486436667]
+script = ExtResource("1_main")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1936943419]
+environment = SubResource("Environment_1")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1678842529]
+transform = Transform3D(0.8658247, 0.35365817, -0.3539399, 0, 0.7073882, 0.7068252, 0.50034744, -0.6119867, 0.6124742, 0, 0, 0)
+shadow_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=403948784]
+navigation_mesh = SubResource("NavigationMesh_1")
+
+[node name="Ground" type="StaticBody3D" parent="NavigationRegion3D" unique_id=1459692454]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground" unique_id=122730853]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("Shape_Ground")
+
+[node name="Mesh" type="MeshInstance3D" parent="NavigationRegion3D/Ground" unique_id=1363093702]
+material_override = SubResource("Mat_Ground")
+mesh = SubResource("Mesh_Ground")
+
+[node name="Jeepney" parent="NavigationRegion3D" unique_id=77037375 instance=ExtResource("7_jeep")]
+transform = Transform3D(0.87758255, 0, -0.47942555, 0, 1, 0, 0.47942555, 0, 0.87758255, 8, 0, 4)
+
+[node name="BahayKubo" parent="NavigationRegion3D" unique_id=1647072366 instance=ExtResource("6_kubo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -5)
+
+[node name="SariSari" parent="NavigationRegion3D" unique_id=1250730308 instance=ExtResource("8_sari")]
+transform = Transform3D(0.7073882, 0, 0.7068252, 0, 1, 0, -0.7068252, 0, 0.7073882, 0, 0, -12)
+
+[node name="PalmTree1" parent="NavigationRegion3D" unique_id=1064203090 instance=ExtResource("9_palm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 5)
+
+[node name="PalmTree2" parent="NavigationRegion3D" unique_id=1183427429 instance=ExtResource("9_palm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -8)
+
+[node name="PalmTree3" parent="NavigationRegion3D" unique_id=1055281100 instance=ExtResource("9_palm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -12)
+
+[node name="Player" parent="." unique_id=2079592517 instance=ExtResource("3_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+
+[node name="PickupAmmo1" parent="." unique_id=489938887 instance=ExtResource("5_pickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 2)
+
+[node name="PickupFood1" parent="." unique_id=1271166101 instance=ExtResource("5_pickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -3)
+type = 1
+
+[node name="PickupWater1" parent="." unique_id=1753562002 instance=ExtResource("5_pickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -10)
+type = 2
+
+[node name="PickupAmmo2" parent="." unique_id=225859201 instance=ExtResource("5_pickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, -8)
+
+[node name="PickupBandage1" parent="." unique_id=178494697 instance=ExtResource("5_pickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, -6)
+type = 3
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1789631080]
+wait_time = 4.0
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1921091707]
+script = ExtResource("2_hud")
+
+[node name="MessageLabel" type="Label" parent="HUD" unique_id=1074796639]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 32.0
+offset_right = 300.0
+offset_bottom = 72.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BleedLabel" type="Label" parent="HUD" unique_id=789475272]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = -50.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.1, 0.1, 1)
+theme_override_font_sizes/font_size = 32
+text = "BLEEDING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Crosshair" type="Control" parent="HUD" unique_id=1166006688]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_cross")

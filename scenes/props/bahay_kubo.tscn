@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3]
+
+[sub_resource type="StandardMaterial3D" id="Mat_Wood"]
+albedo_color = Color(0.4, 0.25, 0.15, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="Mat_Roof"]
+albedo_color = Color(0.6, 0.5, 0.3, 1)
+roughness = 0.9
+
+[sub_resource type="BoxMesh" id="Mesh_Floor"]
+size = Vector3(4, 0.2, 4)
+
+[sub_resource type="BoxMesh" id="Mesh_Stilt"]
+size = Vector3(0.2, 2, 0.2)
+
+[sub_resource type="PrismMesh" id="Mesh_Roof"]
+size = Vector3(5, 2, 5)
+
+[sub_resource type="BoxShape3D" id="Shape_Body"]
+size = Vector3(4, 4, 4)
+
+[node name="BahayKubo" type="StaticBody3D"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+position = Vector3(0, 2, 0)
+shape = SubResource("Shape_Body")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2, 0)
+material_override = SubResource("Mat_Wood")
+mesh = SubResource("Mesh_Floor")
+
+[node name="Stilt1" type="MeshInstance3D" parent="."]
+position = Vector3(1.8, 1, 1.8)
+material_override = SubResource("Mat_Wood")
+mesh = SubResource("Mesh_Stilt")
+
+[node name="Stilt2" type="MeshInstance3D" parent="."]
+position = Vector3(-1.8, 1, 1.8)
+material_override = SubResource("Mat_Wood")
+mesh = SubResource("Mesh_Stilt")
+
+[node name="Stilt3" type="MeshInstance3D" parent="."]
+position = Vector3(1.8, 1, -1.8)
+material_override = SubResource("Mat_Wood")
+mesh = SubResource("Mesh_Stilt")
+
+[node name="Stilt4" type="MeshInstance3D" parent="."]
+position = Vector3(-1.8, 1, -1.8)
+material_override = SubResource("Mat_Wood")
+mesh = SubResource("Mesh_Stilt")
+
+[node name="Roof" type="MeshInstance3D" parent="."]
+position = Vector3(0, 3.5, 0)
+material_override = SubResource("Mat_Roof")
+mesh = SubResource("Mesh_Roof")

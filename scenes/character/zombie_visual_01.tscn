@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/character/placeholder_visual.gd" id="1_phv"]
+
+[node name="ZombieVisual01" type="Node3D"]
+script = ExtResource("1_phv")
+base_color = Color(0.35, 0.55, 0.3, 1)
+body_height = 1.8
+body_radius = 0.4
+idle_bob = 0.05
+walk_bob = 0.13
